@@ -1,47 +1,92 @@
 <!doctype html>
 <html lang="es">
-
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Buscador de imágenes de la NASA</title>
-
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+  <link href="css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 
 <body>
   <main>
-    <div class="text-center container">
-      <div class="row py-lg-3">
-        <div class="col-lg-6 col-md-8 mx-auto">
-          <h1 class="fw-light">Buscador de imágenes de la NASA</h1>
-          <input type="search" class="form-control" name="buscar" id="inputBuscar" placeholder="Ej.: JUPITER">
-          <button class="btn btn-primary my-2" id="btnBuscar">Buscar imágenes</button>
+    <section class="container py-4">
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <h1 class="fw-light text-center mb-3">Buscador de imágenes de la NASA</h1>
+          <form id="formBuscar" class="mb-3" role="search" aria-label="Buscar imágenes">
+            <label for="inputBuscar" class="form-label visually-hidden">Término de búsqueda</label>
+            <div class="input-group">
+              <input
+                type="search"
+                class="form-control"
+                name="buscar"
+                id="inputBuscar"
+                placeholder="Ej.: ANDROMEDA, JUPITER, APOLLO 11"
+                autocomplete="off"
+                minlength="3"
+                aria-describedby="ayudaBuscar"
+                aria-label="Escribe al menos 3 caracteres para buscar imágenes"
+              />
+              <button
+                class="btn btn-primary"
+                id="btnBuscar"
+                type="submit"
+                aria-busy="false"
+                aria-controls="resultGrid estadoCargando estadoVacio estadoError"
+              >
+                Buscar imágenes
+              </button>
+            </div>
+            <small id="ayudaBuscar" class="form-text text-muted">
+              Escribe al menos 3 caracteres y presiona Enter o el botón.
+            </small>
+            <div id="msgValidacion" class="form-text text-danger d-none">
+              Escribe al menos 3 caracteres para realizar la búsqueda.
+            </div>
+          </form>
+          <div id="estadoCargando" class="d-none" role="status" aria-live="polite">
+            <div class="d-flex align-items-center gap-2">
+              <div class="spinner-border" role="status" aria-hidden="true"></div>
+              <span>Buscando…</span>
+            </div>
+          </div>
+          <div id="estadoVacio" class="alert alert-warning d-none mt-3" role="alert" aria-live="polite">
+            No se encontraron resultados para tu búsqueda.
+          </div>
+          <div id="estadoError" class="alert alert-danger d-none mt-3" role="alert" aria-live="assertive">
+            Hubo un problema al obtener los datos. Intenta nuevamente.
+          </div>
         </div>
       </div>
-    </div>
+    </section>
 
-    <div class="container">
-      <div id="contenedor">
+    <section class="container pb-4">
+      <div id="resultGrid" class="row g-3"></div>
+      <div class="d-grid mt-4">
+        <button id="btnCargarMas" class="btn btn-outline-secondary d-none" type="button">
+                <div class="d-grid mt-4">
+        <button id="btnCargarMas" class="btn btn-outline-secondary d-none" type="button">
+          Cargar más resultados
+        </button>
       </div>
-    </div>
+    </section>
   </main>
 
-  <footer class="text-muted py-5">
-    <div class="container">
-      <p class="float-end mb-1">
-        <a href="#">Volver arriba</a>
-      </p>
+  <footer class="text-center text-muted py-3">
+     <div class="container">
+     
       <p class="mb-1">Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">
           Jovenes a Programar</a>, y consume datos de <a href="https://api.nasa.gov/" target="_blank">
           api.nasa.gov</a></p>
-      <p class="mb-1">Generado con fines estrictamente educativos.</p>
+      <p class="mb-1">Generado con fines estrictamente educativos.</p> 
+      <p class="float-end mb-1">
+        <a href="#">Volver arriba</a>
+      </p>
     </div>
   </footer>
 
   <script src="js/space.js"></script>
-
 </body>
-
 </html>
+

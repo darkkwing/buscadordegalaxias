@@ -1,3 +1,5 @@
 main {
     min-height: calc(100vh - 160px);
   }
+
+.card-img-fixed { height: 220px; object-fit: cover; object-position: center; }
